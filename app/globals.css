@@ -347,8 +347,31 @@ h3 {
 
 /* ==================== HERO SECTION & MASTER CTA ==================== */
 .hero {
+  position: relative;
+  overflow: hidden;
   padding-top: clamp(40px, 5vw, 68px);
   padding-bottom: clamp(32px, 4vw, 56px);
+  background-color: #f7f8f6;
+  background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Cu9vVmiLnzjCdLAifRgTQUOwVr1gN9.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 22px;
+  box-shadow: inset 0 0 0 1px rgba(31, 38, 36, 0.06);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(90deg, rgba(247, 248, 246, 0.97) 0%, rgba(247, 248, 246, 0.88) 39%, rgba(247, 248, 246, 0.45) 72%, rgba(247, 248, 246, 0.62) 100%);
+  pointer-events: none;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
 }
 
 
