@@ -588,14 +588,16 @@ function Footer() {
   )
 }
 
-function FloatingWhatsApp() {
+function FloatingWhatsApp({ isVisible }: { isVisible: boolean }) {
   return (
     <a
       href={whatsappUrl}
       target="_blank"
       rel="noreferrer"
-      className="floating-whatsapp"
+      className={`floating-whatsapp ${isVisible ? 'is-visible' : ''}`}
       aria-label="Fale comigo no WhatsApp"
+      aria-hidden={!isVisible}
+      tabIndex={isVisible ? 0 : -1}
     >
       <MessageCircle size={22} />
       <span>Falar no WhatsApp</span>
@@ -629,7 +631,7 @@ export default function Page() {
       <About />
       <Contact />
       <Footer />
-      <FloatingWhatsApp />
+      <FloatingWhatsApp isVisible={isHeaderVisible} />
     </main>
   )
 }
