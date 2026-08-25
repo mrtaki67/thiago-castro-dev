@@ -131,7 +131,7 @@ function Hero() {
         <div className="hero-visual-container">
           <div className="hero-floating-badge-top">
             <Sparkles size={14} style={{ color: 'var(--primary)' }} />
-            <span>Design & Código Intencional</span>
+            <span>Estratégia que gera resultado</span>
           </div>
 
           <div className="hero-visual-card">
@@ -141,7 +141,6 @@ function Hero() {
                 <Layers size={15} style={{ color: '#7bd3c6' }} />
                 <span>Feito de perto, com intenção</span>
               </span>
-              <span style={{ color: '#aeb9b5', fontSize: '11px' }}>MANAUS · BRASIL</span>
             </div>
           </div>
 
@@ -169,7 +168,7 @@ function Hero() {
           </div>
           <div>
             <strong>Tecnologia de Ponta</strong>
-            <span>Next.js, Tailwind CSS e automações inteligentes.</span>
+            <span>Estrutura rápida, responsiva e preparada para crescer.</span>
           </div>
         </div>
 
@@ -430,9 +429,8 @@ function About() {
               <div className="about-image-tag">
                 <div>
                   <strong>Thiago Castro</strong>
-                  <div style={{ fontSize: '11px', color: '#aeb9b5', marginTop: '2px' }}>Desenvolvedor Independente</div>
+                  <div style={{ fontSize: '11px', color: '#aeb9b5', marginTop: '2px' }}>Desenvolvedor</div>
                 </div>
-                <span>MANAUS · AM</span>
               </div>
             </div>
           </div>
@@ -525,10 +523,6 @@ function Contact() {
               <ExternalLink size={14} style={{ color: '#7bd3c6' }} />
               <span>Instagram: @thiagoc.company</span>
             </a>
-            <div className="contact-channel-item">
-              <MapPin size={14} style={{ color: '#7bd3c6' }} />
-              <span>Manaus - AM · Brasil</span>
-            </div>
           </div>
         </div>
 
