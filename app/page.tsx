@@ -111,20 +111,49 @@ function HeroVisualSlider() {
 
 function HeroAmbientBackground() {
   const prefersReducedMotion = useReducedMotion()
+  const layers = [
+    { className: 'hero-landscape-layer layer-distant', d: 'M-40 330 C150 260 260 286 410 330 C560 374 700 350 850 306 C1010 260 1120 275 1240 322 L1240 700 L-40 700 Z', duration: 30 },
+    { className: 'hero-landscape-layer layer-middle', d: 'M-40 390 C120 320 270 320 430 390 C570 450 720 434 880 360 C1030 290 1140 326 1240 378 L1240 700 L-40 700 Z', duration: 25 },
+    { className: 'hero-landscape-layer layer-near', d: 'M-40 470 C130 408 280 400 450 470 C620 540 770 522 930 448 C1080 380 1160 420 1240 452 L1240 700 L-40 700 Z', duration: 20 },
+  ]
+
   return (
     <div className="hero-ambient" aria-hidden="true">
-      <motion.div
-        className="hero-ambient-haze"
-        initial={false}
-        animate={prefersReducedMotion ? undefined : { x: [0, 8, 0], opacity: [0.32, 0.42, 0.32] }}
-        transition={{ duration: 26, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="hero-ambient-ridge"
-        initial={false}
-        animate={prefersReducedMotion ? undefined : { x: [0, -5, 0], y: [0, 3, 0] }}
-        transition={{ duration: 34, repeat: Infinity, ease: 'easeInOut' }}
-      />
+      <motion.svg className="hero-landscape" viewBox="0 0 1200 700" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="hero-sky-fade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="var(--background)" stopOpacity="0" />
+            <stop offset="0.68" stopColor="var(--background)" stopOpacity="0.04" />
+            <stop offset="1" stopColor="var(--background)" stopOpacity="0.22" />
+          </linearGradient>
+          <linearGradient id="hero-reflection" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="var(--primary)" stopOpacity="0.09" />
+            <stop offset="1" stopColor="var(--primary)" stopOpacity="0" />
+          </linearGradient>
+          <filter id="hero-atmosphere"><feGaussianBlur stdDeviation="10" /></filter>
+          <filter id="hero-reflection-blur"><feGaussianBlur stdDeviation="22" /></filter>
+        </defs>
+        <rect width="1200" height="700" fill="url(#hero-sky-fade)" />
+        {layers.map((layer, index) => (
+          <motion.path
+            key={layer.className}
+            className={layer.className}
+            d={layer.d}
+            initial={false}
+            animate={prefersReducedMotion ? undefined : { x: [0, index === 0 ? 3 : index === 1 ? -5 : 7, 0] }}
+            transition={{ duration: layer.duration, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        ))}
+        <motion.path
+          className="hero-landscape-reflection"
+          d="M-40 535 C130 465 280 470 450 535 C620 600 770 580 930 515 C1080 455 1160 492 1240 520 L1240 700 L-40 700 Z"
+          fill="url(#hero-reflection)"
+          filter="url(#hero-reflection-blur)"
+          initial={false}
+          animate={prefersReducedMotion ? undefined : { opacity: [0.55, 0.72, 0.55] }}
+          transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }}
+        />
+      </motion.svg>
     </div>
   )
 }
