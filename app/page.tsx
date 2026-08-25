@@ -111,43 +111,38 @@ function HeroVisualSlider() {
 
 function HeroAmbientBackground() {
   const prefersReducedMotion = useReducedMotion()
-  const highlightDots = [
-    { x: 12, y: 18, delay: 0 },
-    { x: 28, y: 42, delay: 1.8 },
-    { x: 48, y: 24, delay: 3.2 },
-    { x: 70, y: 66, delay: 0.9 },
-    { x: 88, y: 32, delay: 2.4 },
-    { x: 94, y: 82, delay: 4.1 },
-  ]
-
   return (
     <div className="hero-ambient" aria-hidden="true">
       <motion.svg
-        className="hero-ambient-grid"
-        viewBox="0 0 100 100"
+        className="hero-ambient-waves"
+        viewBox="0 0 1200 700"
         preserveAspectRatio="none"
         initial={false}
-        animate={prefersReducedMotion ? undefined : { x: [0, 2, 0], y: [0, -1, 0] }}
-        transition={{ duration: 28, repeat: Infinity, ease: 'easeInOut' }}
+        animate={prefersReducedMotion ? undefined : { x: [0, 10, 0], opacity: [0.82, 0.92, 0.82] }}
+        transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
       >
         <defs>
-          <pattern id="hero-dot-grid" width="7" height="8" patternUnits="userSpaceOnUse">
-            <circle cx="1" cy="1" r="0.42" fill="var(--primary)" />
-          </pattern>
+          <linearGradient id="hero-wave-fill" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="var(--primary)" stopOpacity="0.035" />
+            <stop offset="0.52" stopColor="var(--primary)" stopOpacity="0.11" />
+            <stop offset="1" stopColor="var(--primary)" stopOpacity="0.025" />
+          </linearGradient>
+          <filter id="hero-wave-blur" x="-10%" y="-20%" width="120%" height="140%">
+            <feGaussianBlur stdDeviation="18" />
+          </filter>
         </defs>
-        <rect width="100" height="100" fill="url(#hero-dot-grid)" />
-        {highlightDots.map((dot) => (
-          <motion.circle
-            key={`${dot.x}-${dot.y}`}
-            cx={dot.x}
-            cy={dot.y}
-            r="0.75"
-            fill="var(--primary)"
-            initial={{ opacity: 0.08 }}
-            animate={prefersReducedMotion ? undefined : { opacity: [0.08, 0.2, 0.08] }}
-            transition={{ duration: 6, delay: dot.delay, repeat: Infinity, ease: 'easeInOut' }}
-          />
-        ))}
+        <motion.path
+          className="hero-wave hero-wave-back"
+          d="M-80 180 C180 70 300 100 470 250 C630 390 790 420 970 260 C1080 160 1160 150 1280 220 L1280 720 L-80 720 Z"
+          fill="url(#hero-wave-fill)"
+          filter="url(#hero-wave-blur)"
+        />
+        <motion.path
+          className="hero-wave hero-wave-front"
+          d="M-100 420 C120 320 280 300 450 430 C620 560 760 570 930 420 C1060 305 1160 330 1300 390 L1300 720 L-100 720 Z"
+          fill="url(#hero-wave-fill)"
+          filter="url(#hero-wave-blur)"
+        />
       </motion.svg>
     </div>
   )

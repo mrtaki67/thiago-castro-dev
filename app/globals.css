@@ -382,19 +382,29 @@ h3 {
   pointer-events: none;
 }
 
-.hero-ambient-grid {
+.hero-ambient-waves {
   position: absolute;
-  top: -5%;
-  left: -2%;
-  width: 104%;
-  height: 110%;
-  opacity: 0.1;
+  top: -6%;
+  left: -4%;
+  width: 108%;
+  height: 112%;
+  opacity: 0.86;
+  overflow: visible;
   transform-origin: center;
 }
 
+.hero-wave {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.hero-wave-front {
+  opacity: 0.58;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .hero-ambient-grid,
-  .hero-ambient-grid circle {
+  .hero-ambient-waves,
+  .hero-ambient-waves path {
     animation: none !important;
   }
 }
