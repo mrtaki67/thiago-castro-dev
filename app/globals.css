@@ -360,9 +360,43 @@ h3 {
   background-color: var(--background);
 }
 
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(245, 244, 239, 0.32), rgba(245, 244, 239, 0.08) 58%, rgba(245, 244, 239, 0.22));
+  pointer-events: none;
+}
+
 .hero > * {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+}
+
+.hero-ambient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-ambient-grid {
+  position: absolute;
+  top: -5%;
+  left: -2%;
+  width: 104%;
+  height: 110%;
+  opacity: 0.1;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ambient-grid,
+  .hero-ambient-grid circle {
+    animation: none !important;
+  }
 }
 
 .hero-grid {
