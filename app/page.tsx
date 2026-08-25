@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 
 import {
   ArrowUpRight,
@@ -108,9 +109,51 @@ function HeroVisualSlider() {
   )
 }
 
+function HeroAmbientBackground() {
+  const prefersReducedMotion = useReducedMotion()
+  const dots = Array.from({ length: 72 }, (_, index) => ({
+    x: (index % 12) * 9 + 5,
+    y: Math.floor(index / 12) * 14 + 7,
+    delay: (index % 8) * 0.35,
+  }))
+
+  return (
+    <div className="hero-ambient" aria-hidden="true">
+      <motion.svg
+        className="hero-ambient-grid"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        initial={false}
+        animate={prefersReducedMotion ? undefined : { x: [0, 2, 0], y: [0, -1, 0] }}
+        transition={{ duration: 24, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <defs>
+          <pattern id="hero-dot-grid" width="9" height="14" patternUnits="userSpaceOnUse">
+            <circle cx="1.2" cy="1.2" r="0.65" fill="var(--primary)" />
+          </pattern>
+        </defs>
+        <rect width="100" height="100" fill="url(#hero-dot-grid)" />
+        {dots.slice(0, 18).map((dot) => (
+          <motion.circle
+            key={`${dot.x}-${dot.y}`}
+            cx={dot.x}
+            cy={dot.y}
+            r="0.8"
+            fill="var(--primary)"
+            initial={{ opacity: 0.06 }}
+            animate={prefersReducedMotion ? undefined : { opacity: [0.06, 0.16, 0.06] }}
+            transition={{ duration: 5, delay: dot.delay, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        ))}
+      </motion.svg>
+    </div>
+  )
+}
+
 function Hero() {
   return (
     <section className="hero section-shell" id="inicio">
+      <HeroAmbientBackground />
       <div className="hero-grid">
         <div className="hero-content">
           <h1>
