@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
 import {
   ArrowUpRight,
   MessageCircle,
@@ -29,9 +31,9 @@ const linkedinUrl = 'https://www.linkedin.com/in/thiago-castro-dev?utm_source=sh
 const profileImage = '/images/thiago-castro.jpeg'
 const heroVisualImage = '/images/hero-digital-strategy.png'
 
-function Header() {
+function Header({ isVisible }: { isVisible: boolean }) {
   return (
-    <div className="site-header-wrapper">
+    <div className={`site-header-wrapper ${isVisible ? 'is-visible' : ''}`}>
       <header className="site-header section-shell">
         <a className="brand" href="#inicio" aria-label="Thiago Castro início">
           <span className="brand-mark">TC.</span>
@@ -70,17 +72,25 @@ function Hero() {
             Eu crio sites de alta performance, automações de atendimento e sistemas sob medida para negócios que querem ser encontrados, atender melhor e vender mais todos os dias.
           </p>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', alignItems: 'center', marginTop: '28px' }}>
-            <a className="button button-dark" href={whatsappUrl} target="_blank" rel="noreferrer">
-              <MessageCircle size={18} />
-              <span>Falar no WhatsApp</span>
-              <MoveRight size={18} />
+          <div className="hero-actions">
+            <a className="hero-primary-cta" href={whatsappUrl} target="_blank" rel="noreferrer">
+              <span className="hero-primary-cta-icon"><MessageCircle size={19} /></span>
+              <span className="hero-primary-cta-copy">
+                <strong>Quero tirar meu projeto do papel</strong>
+                <small>Conversa rápida e sem compromisso</small>
+              </span>
+              <span className="hero-primary-cta-arrow"><MoveRight size={19} /></span>
             </a>
 
-            <a className="button button-outline" href="#como-ajudo">
-              <span>Conhecer serviços</span>
+            <a className="hero-secondary-cta" href="#como-ajudo">
+              <span>Ver como posso ajudar</span>
               <ArrowUpRight size={16} />
             </a>
+          </div>
+
+          <div className="hero-cta-reassurance">
+            <span className="hero-cta-status"><span className="hero-cta-status-dot" /> Disponível para novos projetos</span>
+            <span>Resposta em horário comercial</span>
           </div>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginTop: '20px', fontSize: '12px', color: 'var(--muted)' }}>
@@ -121,7 +131,7 @@ function Hero() {
         <div className="hero-visual-container">
           <div className="hero-floating-badge-top">
             <Sparkles size={14} style={{ color: 'var(--primary)' }} />
-            <span>Design & Código Intencional</span>
+            <span>Estratégia que gera resultado</span>
           </div>
 
           <div className="hero-visual-card">
@@ -131,7 +141,6 @@ function Hero() {
                 <Layers size={15} style={{ color: '#7bd3c6' }} />
                 <span>Feito de perto, com intenção</span>
               </span>
-              <span style={{ color: '#aeb9b5', fontSize: '11px' }}>MANAUS · BRASIL</span>
             </div>
           </div>
 
@@ -159,7 +168,7 @@ function Hero() {
           </div>
           <div>
             <strong>Tecnologia de Ponta</strong>
-            <span>Next.js, Tailwind CSS e automações inteligentes.</span>
+            <span>Estrutura rápida, responsiva e preparada para crescer.</span>
           </div>
         </div>
 
@@ -420,9 +429,8 @@ function About() {
               <div className="about-image-tag">
                 <div>
                   <strong>Thiago Castro</strong>
-                  <div style={{ fontSize: '11px', color: '#aeb9b5', marginTop: '2px' }}>Desenvolvedor Independente</div>
+                  <div style={{ fontSize: '11px', color: '#aeb9b5', marginTop: '2px' }}>Desenvolvedor</div>
                 </div>
-                <span>MANAUS · AM</span>
               </div>
             </div>
           </div>
@@ -515,10 +523,6 @@ function Contact() {
               <ExternalLink size={14} style={{ color: '#7bd3c6' }} />
               <span>Instagram: @thiagoc.company</span>
             </a>
-            <div className="contact-channel-item">
-              <MapPin size={14} style={{ color: '#7bd3c6' }} />
-              <span>Manaus - AM · Brasil</span>
-            </div>
           </div>
         </div>
 
@@ -572,9 +576,24 @@ function FloatingWhatsApp() {
 }
 
 export default function Page() {
+  const [isHeaderVisible, setIsHeaderVisible] = useState(false)
+
+  useEffect(() => {
+    const hero = document.getElementById('inicio')
+    if (!hero) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsHeaderVisible(!entry.isIntersecting),
+      { threshold: 0.08 },
+    )
+
+    observer.observe(hero)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <main>
-      <Header />
+      <Header isVisible={isHeaderVisible} />
       <Hero />
       <Problem />
       <Services />
