@@ -69,7 +69,7 @@ function Hero() {
           </h1>
 
           <p style={{ fontSize: '17px', lineHeight: '1.65', color: 'var(--muted)', marginTop: '22px', maxWidth: '520px' }}>
-            Sites de alta performance, automações de atendimento e sistemas sob medida para negócios que querem ser encontrados, atender melhor e vender mais todos os dias.
+            Crio sites de alta performance, automações de atendimento e sistemas sob medida para negócios que querem ser encontrados, atender melhor e vender mais todos os dias.
           </p>
 
           <div className="hero-actions">
