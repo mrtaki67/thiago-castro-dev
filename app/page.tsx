@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 
 import {
   ArrowUpRight,
@@ -33,7 +34,7 @@ const profileImage = '/images/thiago-castro.jpeg'
 const heroSlides = [
   { image: '/images/hero-slide-sites.png', alt: 'Fotografia de um workspace com um site em desenvolvimento', label: 'Sites que apresentam seu valor' },
   { image: '/images/hero-slide-whatsapp.png', alt: 'Fotografia de atendimento de clientes pelo WhatsApp', label: 'Atendimento que não deixa oportunidades passarem' },
-  { image: '/images/hero-slide-google.png', alt: 'Fotografia de uma fachada de negócio local', label: 'Mais presença para ser encontrado' },
+  { image: '/images/hero-slide-google.png', alt: 'Fotografia de uma empresa fortalecendo sua presença digital', label: 'Mais presença para ser encontrado' },
   { image: '/images/hero-slide-sistemas.png', alt: 'Fotografia de um desenvolvedor planejando um sistema', label: 'Sistemas feitos para sua operação' },
 ]
 
@@ -108,55 +109,80 @@ function HeroVisualSlider() {
   )
 }
 
+function HeroAmbientBackground() {
+  const prefersReducedMotion = useReducedMotion()
+  return (
+    <div className="hero-ambient" aria-hidden="true">
+      <motion.svg
+        className="hero-ambient-waves"
+        viewBox="0 0 1200 700"
+        preserveAspectRatio="none"
+        initial={false}
+        animate={prefersReducedMotion ? undefined : { x: [0, 10, 0], opacity: [0.82, 0.92, 0.82] }}
+        transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
+      >
+        <defs>
+          <linearGradient id="hero-wave-fill" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stopColor="var(--primary)" stopOpacity="0.035" />
+            <stop offset="0.52" stopColor="var(--primary)" stopOpacity="0.11" />
+            <stop offset="1" stopColor="var(--primary)" stopOpacity="0.025" />
+          </linearGradient>
+          <filter id="hero-wave-blur" x="-10%" y="-20%" width="120%" height="140%">
+            <feGaussianBlur stdDeviation="18" />
+          </filter>
+        </defs>
+        <motion.path
+          className="hero-wave hero-wave-back"
+          d="M-80 180 C180 70 300 100 470 250 C630 390 790 420 970 260 C1080 160 1160 150 1280 220 L1280 720 L-80 720 Z"
+          fill="url(#hero-wave-fill)"
+          filter="url(#hero-wave-blur)"
+        />
+        <motion.path
+          className="hero-wave hero-wave-front"
+          d="M-100 420 C120 320 280 300 450 430 C620 560 760 570 930 420 C1060 305 1160 330 1300 390 L1300 720 L-100 720 Z"
+          fill="url(#hero-wave-fill)"
+          filter="url(#hero-wave-blur)"
+        />
+      </motion.svg>
+    </div>
+  )
+}
+
 function Hero() {
   return (
     <section className="hero section-shell" id="inicio">
+      <HeroAmbientBackground />
       <div className="hero-grid">
         <div className="hero-content">
           <h1>
-            Presença digital.<br />
-            <em>Do seu jeito.</em>
+            Mais visibilidade.<br />
+            <em>Mais vendas.</em>
           </h1>
 
-          <p style={{ fontSize: '17px', lineHeight: '1.65', color: 'var(--muted)', marginTop: '22px', maxWidth: '520px' }}>
-            Crio sites de alta performance, automações de atendimento e sistemas sob medida para negócios que querem ser encontrados, atender melhor e vender mais todos os dias.
+          <p className="hero-lead">
+            Eu construo sites, automações e sistemas que ajudam seu negócio a ser encontrado, gerar agendamentos e vender todos os dias.
           </p>
 
           <div className="hero-actions">
-            <a className="hero-primary-cta" href={whatsappUrl} target="_blank" rel="noreferrer">
-              <span className="hero-primary-cta-icon"><MessageCircle size={19} /></span>
+            <a className="hero-primary-cta" href="#contato">
               <span className="hero-primary-cta-copy">
-                <strong>Quero tirar meu projeto do papel</strong>
-                <small>Conversa rápida e sem compromisso</small>
+                <strong>Iniciar meu projeto</strong>
+                <small>Vamos transformar sua ideia em resultado</small>
               </span>
               <span className="hero-primary-cta-arrow"><MoveRight size={19} /></span>
             </a>
 
             <a className="hero-secondary-cta" href="#como-ajudo">
-              <span>Ver como posso ajudar</span>
+              <span>Conhecer soluções</span>
               <ArrowUpRight size={16} />
             </a>
           </div>
 
           <div className="hero-cta-reassurance">
             <span className="hero-cta-status"><span className="hero-cta-status-dot" /> Disponível para novos projetos</span>
-            <span>Resposta em horário comercial</span>
+            <span>Atendimento direto, sem intermediários</span>
           </div>
-
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginTop: '20px', fontSize: '12px', color: 'var(--muted)' }}>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-              <CheckCircle2 size={15} style={{ color: 'var(--primary)' }} />
-              Sem intermediários
-            </span>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-              <CheckCircle2 size={15} style={{ color: 'var(--primary)' }} />
-              Atendimento direto
-            </span>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-              <CheckCircle2 size={15} style={{ color: 'var(--primary)' }} />
-              Suporte contínuo
-            </span>
-          </div>
+          {/* Espaço reservado para prova social real: clientes atendidos, avaliação ou case. */}
 
           <div className="hero-tech-pills">
             <span className="hero-tech-pill">
@@ -179,16 +205,11 @@ function Hero() {
         </div>
 
         <div className="hero-visual-container">
-          <div className="hero-floating-badge-top">
-            <Sparkles size={14} style={{ color: 'var(--primary)' }} />
-            <span>Estratégia que gera resultado</span>
-          </div>
-
           <HeroVisualSlider />
 
-          <div className="hero-floating-badge-bottom">
-            <TrendingUp size={14} style={{ color: '#7bd3c6' }} />
-            <span>Foco em Conversão e Vendas</span>
+          <div className="hero-floating-badge-bottom hero-service-badge">
+            <Layers size={14} style={{ color: '#7bd3c6' }} />
+            <span>Sites, automações e sistemas sob medida</span>
           </div>
         </div>
       </div>
@@ -608,14 +629,16 @@ function Footer() {
   )
 }
 
-function FloatingWhatsApp() {
+function FloatingWhatsApp({ isVisible }: { isVisible: boolean }) {
   return (
     <a
       href={whatsappUrl}
       target="_blank"
       rel="noreferrer"
-      className="floating-whatsapp"
+      className={`floating-whatsapp ${isVisible ? 'is-visible' : ''}`}
       aria-label="Fale comigo no WhatsApp"
+      aria-hidden={!isVisible}
+      tabIndex={isVisible ? 0 : -1}
     >
       <MessageCircle size={22} />
       <span>Falar no WhatsApp</span>
@@ -649,7 +672,7 @@ export default function Page() {
       <About />
       <Contact />
       <Footer />
-      <FloatingWhatsApp />
+      <FloatingWhatsApp isVisible={isHeaderVisible} />
     </main>
   )
 }
