@@ -69,7 +69,7 @@ function Hero() {
           </h1>
 
           <p style={{ fontSize: '17px', lineHeight: '1.65', color: 'var(--muted)', marginTop: '22px', maxWidth: '520px' }}>
-            Eu crio sites de alta performance, automações de atendimento e sistemas sob medida para negócios que querem ser encontrados, atender melhor e vender mais todos os dias.
+            Crio sites de alta performance, automações de atendimento e sistemas sob medida para negócios que querem ser encontrados, atender melhor e vender mais todos os dias.
           </p>
 
           <div className="hero-actions">
@@ -336,10 +336,16 @@ function Services() {
                   {item.desc}
                 </p>
 
-                <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 700, color: item.featured ? '#7bd3c6' : 'var(--primary)' }}>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Saber mais sobre ${item.title} pelo WhatsApp`}
+                  style={{ marginTop: '20px', display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 700, color: item.featured ? '#7bd3c6' : 'var(--primary)', textDecoration: 'none' }}
+                >
                   <span>Saber mais</span>
                   <ArrowUpRight size={14} />
-                </div>
+                </a>
               </article>
             )
           })}
