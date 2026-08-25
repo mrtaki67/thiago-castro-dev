@@ -28,7 +28,7 @@ import {
 const whatsappUrl = 'https://wa.me/559284787330?text=Ol%C3%A1%2C%20Thiago!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.'
 const instagramUrl = 'https://www.instagram.com/@thiagoc.company'
 const linkedinUrl = 'https://www.linkedin.com/in/thiago-castro-dev?utm_source=share_via&utm_content=profile&utm_medium=member_android'
-const profileImage = '/images/thiago-castro.png'
+const profileImage = '/images/thiago-castro.jpeg'
 
 const heroSlides = [
   { image: '/images/hero-slide-sites.png', alt: 'Fotografia de um workspace com um site em desenvolvimento', label: 'Sites que apresentam seu valor' },
@@ -432,7 +432,7 @@ function Difference() {
         <div className="difference-grid">
           <div>
             <h2>
-              Sem intermediário,<br />
+              Sem intermedi��rio,<br />
               <em>sem enrolação.</em>
             </h2>
             <p style={{ marginTop: '20px', color: 'var(--muted)', fontSize: '15px', lineHeight: '1.65', maxWidth: '460px' }}>
