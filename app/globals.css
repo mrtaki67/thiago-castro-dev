@@ -385,34 +385,29 @@ h3 {
   pointer-events: none;
 }
 
-.hero-ambient-haze,
-.hero-ambient-ridge {
+.hero-landscape {
   position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.92;
   pointer-events: none;
-  border-radius: 50%;
-  filter: blur(30px);
 }
 
-.hero-ambient-haze {
-  top: 8%;
-  right: -8%;
-  width: 62%;
-  height: 36%;
-  background: rgba(210, 222, 232, 0.28);
+.hero-landscape-layer {
+  transform-box: fill-box;
+  transform-origin: center;
+  filter: url('#hero-atmosphere');
 }
 
-.hero-ambient-ridge {
-  right: -8%;
-  bottom: -24%;
-  width: 78%;
-  height: 62%;
-  background: rgba(143, 163, 181, 0.22);
-  transform: rotate(-8deg);
-}
+.layer-distant { fill: rgba(156, 177, 188, 0.2); }
+.layer-middle { fill: rgba(93, 139, 142, 0.14); }
+.layer-near { fill: rgba(50, 112, 113, 0.16); }
+.hero-landscape-reflection { transform-box: fill-box; transform-origin: center; }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-ambient-haze,
-  .hero-ambient-ridge {
+  .hero-landscape,
+  .hero-landscape path {
     animation: none !important;
   }
 }
