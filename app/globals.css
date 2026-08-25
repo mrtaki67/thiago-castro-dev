@@ -358,7 +358,7 @@ h3 {
   padding-bottom: clamp(32px, 4vw, 56px);
   padding-left: max(clamp(20px, 4vw, 36px), calc((100vw - 1180px) / 2 + 36px));
   background-color: var(--background);
-  background-image: url('/images/hero-landscape-background.png');
+  background-image: url('/images/hero-ambient-landscape.png');
   background-position: center;
   background-size: cover;
 }
