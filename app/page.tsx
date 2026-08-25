@@ -28,13 +28,13 @@ import {
 const whatsappUrl = 'https://wa.me/559284787330?text=Ol%C3%A1%2C%20Thiago!%20Vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto.'
 const instagramUrl = 'https://www.instagram.com/@thiagoc.company'
 const linkedinUrl = 'https://www.linkedin.com/in/thiago-castro-dev?utm_source=share_via&utm_content=profile&utm_medium=member_android'
-const profileImage = '/images/thiago-castro.jpeg'
+const profileImage = '/images/thiago-castro.png'
 
 const heroSlides = [
-  { image: '/images/hero-slide-sites.png', alt: 'Ilustração de um site responsivo em desenvolvimento', label: 'Sites que apresentam seu valor' },
-  { image: '/images/hero-slide-whatsapp.png', alt: 'Ilustração de automação de atendimento pelo WhatsApp', label: 'Atendimento que não deixa oportunidades passarem' },
-  { image: '/images/hero-slide-google.png', alt: 'Ilustração de presença digital para negócios locais', label: 'Mais presença para ser encontrado' },
-  { image: '/images/hero-slide-sistemas.png', alt: 'Ilustração de um sistema sob medida com módulos conectados', label: 'Sistemas feitos para sua operação' },
+  { image: '/images/hero-slide-sites.png', alt: 'Fotografia de um workspace com um site em desenvolvimento', label: 'Sites que apresentam seu valor' },
+  { image: '/images/hero-slide-whatsapp.png', alt: 'Fotografia de atendimento de clientes pelo WhatsApp', label: 'Atendimento que não deixa oportunidades passarem' },
+  { image: '/images/hero-slide-google.png', alt: 'Fotografia de uma fachada de negócio local', label: 'Mais presença para ser encontrado' },
+  { image: '/images/hero-slide-sistemas.png', alt: 'Fotografia de um desenvolvedor planejando um sistema', label: 'Sistemas feitos para sua operação' },
 ]
 
 function Header({ isVisible }: { isVisible: boolean }) {
