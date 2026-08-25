@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect, useState } from 'react'
+
 import {
   ArrowUpRight,
   MessageCircle,
@@ -29,9 +31,9 @@ const linkedinUrl = 'https://www.linkedin.com/in/thiago-castro-dev?utm_source=sh
 const profileImage = '/images/thiago-castro.jpeg'
 const heroVisualImage = '/images/hero-digital-strategy.png'
 
-function Header() {
+function Header({ isVisible }: { isVisible: boolean }) {
   return (
-    <div className="site-header-wrapper">
+    <div className={`site-header-wrapper ${isVisible ? 'is-visible' : ''}`}>
       <header className="site-header section-shell">
         <a className="brand" href="#inicio" aria-label="Thiago Castro início">
           <span className="brand-mark">TC.</span>
@@ -580,9 +582,24 @@ function FloatingWhatsApp() {
 }
 
 export default function Page() {
+  const [isHeaderVisible, setIsHeaderVisible] = useState(false)
+
+  useEffect(() => {
+    const hero = document.getElementById('inicio')
+    if (!hero) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsHeaderVisible(!entry.isIntersecting),
+      { threshold: 0.08 },
+    )
+
+    observer.observe(hero)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <main>
-      <Header />
+      <Header isVisible={isHeaderVisible} />
       <Hero />
       <Problem />
       <Services />

@@ -99,15 +99,25 @@ a {
 
 /* Header */
 .site-header-wrapper {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
   z-index: 50;
   width: 100%;
   background-color: rgba(245, 244, 239, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
-  transition: all 0.2s ease;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-100%);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.site-header-wrapper.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .site-header {
