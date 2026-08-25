@@ -432,7 +432,7 @@ function Difference() {
         <div className="difference-grid">
           <div>
             <h2>
-              {"Sem intermediário,"}<br />
+              {"Sem intermedi\u00e1rio,"}<br />
               <em>sem enrolação.</em>
             </h2>
             <p style={{ marginTop: '20px', color: 'var(--muted)', fontSize: '15px', lineHeight: '1.65', maxWidth: '460px' }}>
