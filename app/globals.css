@@ -358,6 +358,9 @@ h3 {
   padding-bottom: clamp(32px, 4vw, 56px);
   padding-left: max(clamp(20px, 4vw, 36px), calc((100vw - 1180px) / 2 + 36px));
   background-color: var(--background);
+  background-image: url('/images/hero-landscape-background.png');
+  background-position: center;
+  background-size: cover;
 }
 
 .hero::before {
@@ -365,7 +368,7 @@ h3 {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(90deg, rgba(245, 244, 239, 0.32), rgba(245, 244, 239, 0.08) 58%, rgba(245, 244, 239, 0.22));
+  background: linear-gradient(90deg, rgba(245, 244, 239, 0.9) 0%, rgba(245, 244, 239, 0.62) 46%, rgba(245, 244, 239, 0.18) 100%);
   pointer-events: none;
 }
 
@@ -382,29 +385,34 @@ h3 {
   pointer-events: none;
 }
 
-.hero-ambient-waves {
+.hero-ambient-haze,
+.hero-ambient-ridge {
   position: absolute;
-  top: -6%;
-  left: -4%;
-  width: 108%;
-  height: 112%;
-  opacity: 0.86;
-  overflow: visible;
-  transform-origin: center;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(30px);
 }
 
-.hero-wave {
-  transform-box: fill-box;
-  transform-origin: center;
+.hero-ambient-haze {
+  top: 8%;
+  right: -8%;
+  width: 62%;
+  height: 36%;
+  background: rgba(210, 222, 232, 0.28);
 }
 
-.hero-wave-front {
-  opacity: 0.58;
+.hero-ambient-ridge {
+  right: -8%;
+  bottom: -24%;
+  width: 78%;
+  height: 62%;
+  background: rgba(143, 163, 181, 0.22);
+  transform: rotate(-8deg);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-ambient-waves,
-  .hero-ambient-waves path {
+  .hero-ambient-haze,
+  .hero-ambient-ridge {
     animation: none !important;
   }
 }

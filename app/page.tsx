@@ -113,37 +113,18 @@ function HeroAmbientBackground() {
   const prefersReducedMotion = useReducedMotion()
   return (
     <div className="hero-ambient" aria-hidden="true">
-      <motion.svg
-        className="hero-ambient-waves"
-        viewBox="0 0 1200 700"
-        preserveAspectRatio="none"
+      <motion.div
+        className="hero-ambient-haze"
         initial={false}
-        animate={prefersReducedMotion ? undefined : { x: [0, 10, 0], opacity: [0.82, 0.92, 0.82] }}
-        transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
-      >
-        <defs>
-          <linearGradient id="hero-wave-fill" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stopColor="var(--primary)" stopOpacity="0.035" />
-            <stop offset="0.52" stopColor="var(--primary)" stopOpacity="0.11" />
-            <stop offset="1" stopColor="var(--primary)" stopOpacity="0.025" />
-          </linearGradient>
-          <filter id="hero-wave-blur" x="-10%" y="-20%" width="120%" height="140%">
-            <feGaussianBlur stdDeviation="18" />
-          </filter>
-        </defs>
-        <motion.path
-          className="hero-wave hero-wave-back"
-          d="M-80 180 C180 70 300 100 470 250 C630 390 790 420 970 260 C1080 160 1160 150 1280 220 L1280 720 L-80 720 Z"
-          fill="url(#hero-wave-fill)"
-          filter="url(#hero-wave-blur)"
-        />
-        <motion.path
-          className="hero-wave hero-wave-front"
-          d="M-100 420 C120 320 280 300 450 430 C620 560 760 570 930 420 C1060 305 1160 330 1300 390 L1300 720 L-100 720 Z"
-          fill="url(#hero-wave-fill)"
-          filter="url(#hero-wave-blur)"
-        />
-      </motion.svg>
+        animate={prefersReducedMotion ? undefined : { x: [0, 8, 0], opacity: [0.32, 0.42, 0.32] }}
+        transition={{ duration: 26, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="hero-ambient-ridge"
+        initial={false}
+        animate={prefersReducedMotion ? undefined : { x: [0, -5, 0], y: [0, 3, 0] }}
+        transition={{ duration: 34, repeat: Infinity, ease: 'easeInOut' }}
+      />
     </div>
   )
 }
