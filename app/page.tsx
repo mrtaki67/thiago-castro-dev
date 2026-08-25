@@ -29,7 +29,13 @@ const whatsappUrl = 'https://wa.me/559284787330?text=Ol%C3%A1%2C%20Thiago!%20Vim
 const instagramUrl = 'https://www.instagram.com/@thiagoc.company'
 const linkedinUrl = 'https://www.linkedin.com/in/thiago-castro-dev?utm_source=share_via&utm_content=profile&utm_medium=member_android'
 const profileImage = '/images/thiago-castro.jpeg'
-const heroVisualImage = '/images/hero-digital-strategy.png'
+
+const heroSlides = [
+  { image: '/images/hero-slide-sites.png', alt: 'Ilustração de um site responsivo em desenvolvimento', label: 'Sites que apresentam seu valor' },
+  { image: '/images/hero-slide-whatsapp.png', alt: 'Ilustração de automação de atendimento pelo WhatsApp', label: 'Atendimento que não deixa oportunidades passarem' },
+  { image: '/images/hero-slide-google.png', alt: 'Ilustração de presença digital para negócios locais', label: 'Mais presença para ser encontrado' },
+  { image: '/images/hero-slide-sistemas.png', alt: 'Ilustração de um sistema sob medida com módulos conectados', label: 'Sistemas feitos para sua operação' },
+]
 
 function Header({ isVisible }: { isVisible: boolean }) {
   return (
@@ -54,6 +60,50 @@ function Header({ isVisible }: { isVisible: boolean }) {
           <ArrowUpRight size={15} />
         </a>
       </header>
+    </div>
+  )
+}
+
+function HeroVisualSlider() {
+  const [activeSlide, setActiveSlide] = useState(0)
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % heroSlides.length)
+    }, 5000)
+    return () => window.clearInterval(timer)
+  }, [])
+
+  const slide = heroSlides[activeSlide]
+
+  return (
+    <div className="hero-visual-card">
+      {heroSlides.map((item, index) => (
+        <img
+          key={item.image}
+          src={item.image}
+          alt={item.alt}
+          className={index === activeSlide ? 'hero-slide is-active' : 'hero-slide'}
+          aria-hidden={index !== activeSlide}
+        />
+      ))}
+      <div className="hero-visual-bottom-bar">
+        <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Layers size={15} style={{ color: '#7bd3c6' }} />
+          <span>{slide.label}</span>
+        </span>
+        <span className="hero-slide-dots" aria-label={`Slide ${activeSlide + 1} de ${heroSlides.length}`}>
+          {heroSlides.map((item, index) => (
+            <button
+              key={item.image}
+              type="button"
+              className={index === activeSlide ? 'is-active' : ''}
+              aria-label={`Ver slide ${index + 1}`}
+              onClick={() => setActiveSlide(index)}
+            />
+          ))}
+        </span>
+      </div>
     </div>
   )
 }
@@ -134,15 +184,7 @@ function Hero() {
             <span>Estratégia que gera resultado</span>
           </div>
 
-          <div className="hero-visual-card">
-            <img src={heroVisualImage} alt="Estratégia e Presença Digital por Thiago Castro" />
-            <div className="hero-visual-bottom-bar">
-              <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Layers size={15} style={{ color: '#7bd3c6' }} />
-                <span>Feito de perto, com intenção</span>
-              </span>
-            </div>
-          </div>
+          <HeroVisualSlider />
 
           <div className="hero-floating-badge-bottom">
             <TrendingUp size={14} style={{ color: '#7bd3c6' }} />
