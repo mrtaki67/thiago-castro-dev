@@ -369,40 +369,16 @@ h3 {
   content: '';
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 0;
   background: linear-gradient(90deg, rgba(247, 248, 246, 0.97) 0%, rgba(247, 248, 246, 0.88) 39%, rgba(247, 248, 246, 0.45) 72%, rgba(247, 248, 246, 0.62) 100%);
   pointer-events: none;
 }
 
 .hero > * {
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
-.hero-ambient {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.hero-ambient-grid {
-  position: absolute;
-  top: -4%;
-  left: -2%;
-  width: 104%;
-  height: 108%;
-  opacity: 0.1;
-  transform-origin: center;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-ambient-grid,
-  .hero-ambient-grid circle {
-    animation: none !important;
-  }
-}
 
 .hero-grid {
   display: grid;
