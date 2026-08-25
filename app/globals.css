@@ -714,11 +714,49 @@ h3 {
   height: 340px;
   object-fit: cover;
   object-position: center;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.hero-visual-card:hover img {
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.025);
+  transition: opacity 0.9s ease, transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-slide:first-child {
+  position: relative;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.hero-visual-card:hover .hero-slide.is-active {
   transform: scale(1.03);
+}
+
+.hero-slide-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.hero-slide-dots button {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.42);
+  cursor: pointer;
+  transition: width 0.25s ease, background-color 0.25s ease;
+}
+
+.hero-slide-dots button.is-active {
+  width: 16px;
+  background: #7bd3c6;
 }
 
 .hero-visual-bottom-bar {
