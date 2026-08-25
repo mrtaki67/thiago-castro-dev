@@ -32,10 +32,10 @@ const linkedinUrl = 'https://www.linkedin.com/in/thiago-castro-dev?utm_source=sh
 const profileImage = '/images/thiago-castro.jpeg'
 
 const heroSlides = [
-  { image: '/images/hero-slide-sites.png', alt: 'Fotografia de um workspace com um site em desenvolvimento', label: 'Sites que apresentam seu valor' },
-  { image: '/images/hero-slide-whatsapp.png', alt: 'Fotografia de atendimento de clientes pelo WhatsApp', label: 'Atendimento que não deixa oportunidades passarem' },
-  { image: '/images/hero-slide-google.png', alt: 'Fotografia de uma empresa fortalecendo sua presença digital', label: 'Mais presença para ser encontrado' },
-  { image: '/images/hero-slide-sistemas.png', alt: 'Fotografia de um desenvolvedor planejando um sistema', label: 'Sistemas feitos para sua operação' },
+  { image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gemini_Generated_Image_vyz2znvyz2znvyz2-Or5En8aqgTwEez0rwb5a34pKaZMTvD.jpg', alt: 'Laptop e celular exibindo um site para um negócio local', label: 'Sites que apresentam seu valor' },
+  { image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gemini_Generated_Image_pb4ihrpb4ihrpb4i-7J6jEyw7hkvAfjR2u3fMpwkbRGHLOv.jpg', alt: 'Laptop e celular com CRM e conversas de atendimento', label: 'Atendimento que não deixa oportunidades passarem' },
+  { image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gemini_Generated_Image_foz5igfoz5igfoz5-1tJQCOn8xQbxwZ47cbRlnxqh8P1fUX.jpg', alt: 'Pessoa trabalhando em um laptop com verificação de segurança', label: 'Mais presença para ser encontrado' },
+  { image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gemini_Generated_Image_gfc8rtgfc8rtgfc8-9vq4rFjzdc449P3qZHa3JfOW8lTzAg.jpg', alt: 'Monitor exibindo um sistema de gestão de clientes', label: 'Sistemas feitos para sua operação' },
 ]
 
 function Header({ isVisible }: { isVisible: boolean }) {
