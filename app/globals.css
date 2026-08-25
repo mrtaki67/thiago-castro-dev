@@ -1238,12 +1238,19 @@ h3 {
 /* Responsive Breakpoints */
 @media (max-width: 1200px) and (min-width: 961px) {
   .hero {
-    padding-top: 28px;
-    padding-bottom: 28px;
+    min-height: calc(100vh - 24px);
+    padding-top: 18px;
+    padding-bottom: 18px;
   }
 
   .hero-grid {
-    gap: 32px;
+    grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+    gap: 28px;
+    align-items: center;
+  }
+
+  .hero-content {
+    justify-content: center;
   }
 
   .hero h1 {
@@ -1275,22 +1282,30 @@ h3 {
   }
 
   .hero-tech-pills {
-    gap: 7px;
-    margin-top: 18px;
+    gap: 8px;
+    margin-top: 16px;
   }
 
   .hero-tech-pill {
-    min-height: 42px;
-    padding: 9px 10px;
+    min-height: 44px;
+    padding: 9px 11px;
+  }
+
+  .hero-visual-container {
+    transform: translateY(-4px);
   }
 
   .hero-visual-card img {
-    height: 280px;
+    height: 330px;
+  }
+
+  .hero-floating-badge-bottom {
+    bottom: -12px;
   }
 
   .hero-stats-strip {
-    margin-top: 32px;
-    padding-top: 16px;
+    margin-top: 24px;
+    padding-top: 14px;
   }
 }
 
