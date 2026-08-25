@@ -336,10 +336,16 @@ function Services() {
                   {item.desc}
                 </p>
 
-                <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 700, color: item.featured ? '#7bd3c6' : 'var(--primary)' }}>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Saber mais sobre ${item.title} pelo WhatsApp`}
+                  style={{ marginTop: '20px', display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 700, color: item.featured ? '#7bd3c6' : 'var(--primary)', textDecoration: 'none' }}
+                >
                   <span>Saber mais</span>
                   <ArrowUpRight size={14} />
-                </div>
+                </a>
               </article>
             )
           })}
