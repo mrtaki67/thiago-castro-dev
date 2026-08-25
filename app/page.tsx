@@ -70,17 +70,25 @@ function Hero() {
             Eu crio sites de alta performance, automações de atendimento e sistemas sob medida para negócios que querem ser encontrados, atender melhor e vender mais todos os dias.
           </p>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', alignItems: 'center', marginTop: '28px' }}>
-            <a className="button button-dark" href={whatsappUrl} target="_blank" rel="noreferrer">
-              <MessageCircle size={18} />
-              <span>Falar no WhatsApp</span>
-              <MoveRight size={18} />
+          <div className="hero-actions">
+            <a className="hero-primary-cta" href={whatsappUrl} target="_blank" rel="noreferrer">
+              <span className="hero-primary-cta-icon"><MessageCircle size={19} /></span>
+              <span className="hero-primary-cta-copy">
+                <strong>Quero tirar meu projeto do papel</strong>
+                <small>Conversa rápida e sem compromisso</small>
+              </span>
+              <span className="hero-primary-cta-arrow"><MoveRight size={19} /></span>
             </a>
 
-            <a className="button button-outline" href="#como-ajudo">
-              <span>Conhecer serviços</span>
+            <a className="hero-secondary-cta" href="#como-ajudo">
+              <span>Ver como posso ajudar</span>
               <ArrowUpRight size={16} />
             </a>
+          </div>
+
+          <div className="hero-cta-reassurance">
+            <span className="hero-cta-status"><span className="hero-cta-status-dot" /> Disponível para novos projetos</span>
+            <span>Resposta em horário comercial</span>
           </div>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginTop: '20px', fontSize: '12px', color: 'var(--muted)' }}>
